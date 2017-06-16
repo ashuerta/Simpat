@@ -7,8 +7,8 @@
     <ProjectGuid>{2D1FEDA8-3823-4964-8403-48EA7BB38888}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ASHM.UI.Console</RootNamespace>
-    <AssemblyName>ASHM.UI.Console</AssemblyName>
+    <RootNamespace>ASHM.UI.ConsoleFirst</RootNamespace>
+    <AssemblyName>ASHM.UI.ConsoleFirst</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,6 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASHM.Common.Entities\ASHM.Common.Entities.csproj">
+      <Project>{0d928248-3d7f-4c00-b3c8-c910a3497bc1}</Project>
+      <Name>ASHM.Common.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASHM.Service.App\ASHM.Service.App.csproj">
+      <Project>{384deb06-9fc2-4061-9e41-11dcd83bc7ec}</Project>
+      <Name>ASHM.Service.App</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

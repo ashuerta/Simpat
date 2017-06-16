@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ASHM.Service.App
+namespace ASHM.Common.Entities
 {
-    public class Class1
+    public interface IFizzBuzz
     {
+        int MinEdge { get; set; }
+
+        int MaxEdge { get; set; }
+
     }
 }
