@@ -15,26 +15,38 @@ namespace ASHM.Common.Entities
 
         public int MinEdge { get; set; }
 
-        public List<string> Tokens { get; set; }
+        public Dictionary<int, string> Tokens { get; set; }
 
         public Advance()
         {
             MinEdge = 1;
             MaxEdge = 100;
-            Tokens = new List<string>();
-            Tokens.AddRange(new[] {"Fizz", "Buzz"});
+            Tokens = new Dictionary<int, string> {{1, "Fizz"}, {2, "Buzz"}};
         }
 
         public BigList GetByRange()
         {
             var linked = new BigList();
+            if (MaxEdge < MinEdge)
+            {
+                for (var i = MinEdge; i >= MaxEdge; i--)
+                {
+                    var s = string.Empty;
+                    if ((i % 3) == 0) s += Tokens[1];
+                    if ((i % 5) == 0) s += Tokens[2];
+
+                    linked.AddLast(i, !string.IsNullOrEmpty(s) ? s : i.ToString(CultureInfo.InvariantCulture));
+                }
+                return linked;
+            }
+
             for (var i = MinEdge; i <= MaxEdge; i++)
             {
                 var s = string.Empty;
-                if ((i % 3) == 0) s += Tokens[0];
-                if ((i % 5) == 0) s += Tokens[1];
+                if ((i % 3) == 0) s += Tokens[1];
+                if ((i % 5) == 0) s += Tokens[2];
 
-                linked.AddLast(!string.IsNullOrEmpty(s) ? s : i.ToString(CultureInfo.InvariantCulture));
+                linked.AddLast(i, !string.IsNullOrEmpty(s) ? s : i.ToString(CultureInfo.InvariantCulture));
             }
             return linked;
         }

@@ -9,6 +9,6 @@ namespace ASHM.Common.Entities
     public class Node
     {
         public Node Next;
-        public string Value;
+        public Item Value;
     }
 }

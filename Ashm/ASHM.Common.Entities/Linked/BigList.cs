@@ -15,7 +15,7 @@ namespace ASHM.Common.Entities.Linked
             var current = _head;
             while (current != null)
             {
-                Console.WriteLine(current.Value);
+                Console.WriteLine(current.Value.Label);
                 current = current.Next;
             }
         }
@@ -30,18 +30,19 @@ namespace ASHM.Common.Entities.Linked
         //    _head = toAdd;
         //}
 
-        public void AddLast(string value)
+        public void AddLast(int index, string value)
         {
+            var v = new Item(index, value);
             if (_head == null)
             {
                 _head = new Node();
-                _head.Value = value;
+                _head.Value = v;
                 _head.Next = null;
             }
             else
             {
                 Node toAdd = new Node();
-                toAdd.Value = value;
+                toAdd.Value = v;
 
                 Node current = _head;
                 while (current.Next != null)
