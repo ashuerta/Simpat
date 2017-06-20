@@ -19,5 +19,15 @@ namespace ASHM.Service.App
         {
             return adv.GetByRange();
         }
+
+        public BigList AdvanceByInputUser(Advance adv)
+        {
+            return adv.GetByInputUser();
+        }
+
+        public BigList AdvanceByCustomTokens(Advance adv)
+        {
+            return adv.GetByCustomTokens();
+        }
     }
 }
