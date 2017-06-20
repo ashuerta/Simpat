@@ -29,5 +29,15 @@ namespace ASHM.Service.App
         {
             return adv.GetByCustomTokens();
         }
+
+        public BigList AdvanceByPerfectSquare(Advance adv)
+        {
+            return adv.GetByPerfectSquare();
+        }
+
+        public BigList AdvanceByInsideDigits(Advance adv)
+        {
+            return adv.GetByInsideDigits();
+        }
     }
 }

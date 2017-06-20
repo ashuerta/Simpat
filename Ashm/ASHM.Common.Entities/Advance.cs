@@ -15,6 +15,8 @@ namespace ASHM.Common.Entities
 
         public int MinEdge { get; set; }
 
+        public int DigitPattern { get; set; }
+
         public Dictionary<int, string> Tokens { get; set; }
 
         public Dictionary<int, string> Items { get; set; }
@@ -81,6 +83,83 @@ namespace ASHM.Common.Entities
                 linked.AddLast(i, !string.IsNullOrEmpty(s) ? s : i.ToString(CultureInfo.InvariantCulture));
             }
             return linked;
+        }
+
+        public BigList GetByPerfectSquare()
+        {
+            var linked = new BigList();
+            if (MaxEdge < MinEdge)
+            {
+                for (var i = MinEdge; i >= MaxEdge; i--)
+                {
+                    var s = string.Empty;
+                    if (i > 0)
+                    {
+                        if (IsPerfectSquare((uint)i))
+                            s += "Circles";
+                    }
+                    linked.AddLast(i, !string.IsNullOrEmpty(s) ? s : i.ToString(CultureInfo.InvariantCulture));
+                }
+                return linked;
+            }
+            for (var i = MinEdge; i <= MaxEdge; i++)
+            {
+                var s = string.Empty;
+                if (i > 0)
+                {
+                    if (IsPerfectSquare((uint)i))
+                        s += "Circles";
+                }
+                linked.AddLast(i, !string.IsNullOrEmpty(s) ? s : i.ToString(CultureInfo.InvariantCulture));
+            }
+            return linked;
+        }
+
+        public BigList GetByInsideDigits()
+        {
+            var linked = new BigList();
+            if (MaxEdge < MinEdge)
+            {
+                for (var i = MinEdge; i >= MaxEdge; i--)
+                {
+                    var s = string.Empty;
+                    if (ContainsDigit((uint)i, (uint)DigitPattern))
+                    {
+                        s += $"Number {DigitPattern} present in the number {i}";
+                    }
+                    linked.AddLast(i, !string.IsNullOrEmpty(s) ? s : i.ToString(CultureInfo.InvariantCulture));
+                }
+                return linked;
+            }
+            for (var i = MinEdge; i <= MaxEdge; i++)
+            {
+                var s = string.Empty;
+                if (ContainsDigit((uint)i, (uint)DigitPattern))
+                {
+                    s += $"Number {DigitPattern} present in the number {i}";
+                }
+                linked.AddLast(i, !string.IsNullOrEmpty(s) ? s : i.ToString(CultureInfo.InvariantCulture));
+            }
+            return linked;
+        }
+
+        private bool ContainsDigit(uint num, uint dgt)
+        {
+            dgt = dgt % 10;                
+            if ((num == 0) && (dgt == 0))  
+                return true;
+            while (num != 0)
+            {             
+                if ((num % 10) == dgt)     
+                    return true;
+                num = num / 10;            
+            }
+            return false;                  
+        }
+
+        private bool IsPerfectSquare(uint number)
+        {
+            return (Math.Sqrt(number) % 1 == 0);
         }
 
         public List<string> Get()

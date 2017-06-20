@@ -31,11 +31,11 @@ namespace ASHM.UI.ConsoleSecond
                 }
                 var adv = new Advance();
                 var r = new BigList();
+                var min = 0;
+                var max = 0;
                 switch (op)
                 {
                     case 1:
-                        var min = 0;
-                        var max = 0;
                         Console.Clear();
                         Console.Write("Set initial number: ");
                         if (int.TryParse(Console.ReadLine(), out min))
@@ -156,11 +156,42 @@ namespace ASHM.UI.ConsoleSecond
                                 o = true;
                             }
                         } while (o);
-                    
                         break;
                     case 4:
+                        Console.Clear();
+                        Console.Write("Set initial number: ");
+                        if (int.TryParse(Console.ReadLine(), out min))
+                        {
+                            adv.MinEdge = min;
+                        }
+                        Console.Write("Set last number: ");
+                        if (int.TryParse(Console.ReadLine(), out max))
+                        {
+                            adv.MaxEdge = max;
+                        }
+                        r = srv.AdvanceByPerfectSquare(adv);
+                        Menu.ShowResults(r);
                         break;
                     case 5:
+                        Console.Clear();
+                        var toSearch = 0;
+                        Console.Write("Set initial number: ");
+                        if (int.TryParse(Console.ReadLine(), out min))
+                        {
+                            adv.MinEdge = min;
+                        }
+                        Console.Write("Set last number: ");
+                        if (int.TryParse(Console.ReadLine(), out max))
+                        {
+                            adv.MaxEdge = max;
+                        }
+                        Console.Write("Set pattern to search by digit: ");
+                        if (int.TryParse(Console.ReadLine(), out toSearch))
+                        {
+                            adv.DigitPattern = toSearch;
+                        }
+                        r = srv.AdvanceByInsideDigits(adv);
+                        Menu.ShowResults(r);
                         break;
                     default:
                         Menu.ShowInvalidOption(false);
